@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cf-browser-cdp",
+  "main": "./src/index.ts",
+  "compatibility_date": "2026-01-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "minify": true,
+  "upload_source_maps": true,
+  "keep_vars": true,
+  "observability": {
+    "traces": {
+      "enabled": true,
+    },
+    "logs": {
+      "enabled": true,
+    },
+  },
+  "browser": {
+    "binding": "BROWSER",
+    "remote": true,
+  },
+}
